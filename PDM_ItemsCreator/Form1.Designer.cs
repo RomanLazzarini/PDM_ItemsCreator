@@ -33,6 +33,8 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnBrowseDest = new System.Windows.Forms.Button();
+            this.txtDestFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbFileType = new System.Windows.Forms.ComboBox();
             this.btnBrowse = new System.Windows.Forms.Button();
@@ -54,9 +56,9 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(266, 46);
+            this.btnConnect.Location = new System.Drawing.Point(267, 51);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(277, 58);
+            this.btnConnect.Size = new System.Drawing.Size(277, 49);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Conectar a PDM";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -65,11 +67,11 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(37, 163);
+            this.lblStatus.Location = new System.Drawing.Point(575, 60);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(92, 32);
+            this.lblStatus.Size = new System.Drawing.Size(264, 32);
             this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "label1";
+            this.lblStatus.Text = "Estado de conexión";
             // 
             // groupBox1
             // 
@@ -78,23 +80,42 @@
             this.groupBox1.Controls.Add(this.btnConnect);
             this.groupBox1.Location = new System.Drawing.Point(33, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(609, 274);
+            this.groupBox1.Size = new System.Drawing.Size(932, 125);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1. Conexión a PDM";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnBrowseDest);
+            this.groupBox2.Controls.Add(this.txtDestFolder);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbFileType);
             this.groupBox2.Controls.Add(this.btnBrowse);
             this.groupBox2.Controls.Add(this.txtExcelPath);
-            this.groupBox2.Location = new System.Drawing.Point(685, 52);
+            this.groupBox2.Location = new System.Drawing.Point(33, 179);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1443, 239);
+            this.groupBox2.Size = new System.Drawing.Size(2544, 385);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Configuración de Migración";
+            // 
+            // btnBrowseDest
+            // 
+            this.btnBrowseDest.Location = new System.Drawing.Point(1074, 264);
+            this.btnBrowseDest.Name = "btnBrowseDest";
+            this.btnBrowseDest.Size = new System.Drawing.Size(226, 48);
+            this.btnBrowseDest.TabIndex = 5;
+            this.btnBrowseDest.Text = "Buscar Destino";
+            this.btnBrowseDest.UseVisualStyleBackColor = true;
+            this.btnBrowseDest.Click += new System.EventHandler(this.btnBrowseDest_Click);
+            // 
+            // txtDestFolder
+            // 
+            this.txtDestFolder.Location = new System.Drawing.Point(26, 274);
+            this.txtDestFolder.Name = "txtDestFolder";
+            this.txtDestFolder.Size = new System.Drawing.Size(1021, 38);
+            this.txtDestFolder.TabIndex = 4;
             // 
             // label1
             // 
@@ -123,27 +144,28 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(1122, 64);
+            this.btnBrowse.Location = new System.Drawing.Point(1122, 53);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(247, 37);
+            this.btnBrowse.Size = new System.Drawing.Size(247, 55);
             this.btnBrowse.TabIndex = 1;
             this.btnBrowse.Text = "Buscar Excel";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtExcelPath
             // 
-            this.txtExcelPath.Location = new System.Drawing.Point(9, 157);
+            this.txtExcelPath.Location = new System.Drawing.Point(23, 124);
             this.txtExcelPath.Name = "txtExcelPath";
-            this.txtExcelPath.Size = new System.Drawing.Size(1360, 38);
+            this.txtExcelPath.Size = new System.Drawing.Size(2497, 38);
             this.txtExcelPath.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.rtbLogs);
             this.groupBox3.Controls.Add(this.btnStartMigration);
-            this.groupBox3.Location = new System.Drawing.Point(33, 368);
+            this.groupBox3.Location = new System.Drawing.Point(33, 619);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1799, 395);
+            this.groupBox3.Size = new System.Drawing.Size(2544, 634);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "3. Ejecución y Monitoreo";
@@ -152,7 +174,7 @@
             // 
             this.rtbLogs.Location = new System.Drawing.Point(26, 133);
             this.rtbLogs.Name = "rtbLogs";
-            this.rtbLogs.Size = new System.Drawing.Size(1748, 225);
+            this.rtbLogs.Size = new System.Drawing.Size(2494, 474);
             this.rtbLogs.TabIndex = 1;
             this.rtbLogs.Text = "";
             // 
@@ -164,12 +186,13 @@
             this.btnStartMigration.TabIndex = 0;
             this.btnStartMigration.Text = "Iniciar migración";
             this.btnStartMigration.UseVisualStyleBackColor = true;
+            this.btnStartMigration.Click += new System.EventHandler(this.btnStartMigration_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2133, 1073);
+            this.ClientSize = new System.Drawing.Size(2705, 1532);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -199,6 +222,8 @@
         private System.Windows.Forms.RichTextBox rtbLogs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbFileType;
+        private System.Windows.Forms.Button btnBrowseDest;
+        private System.Windows.Forms.TextBox txtDestFolder;
     }
 }
 
