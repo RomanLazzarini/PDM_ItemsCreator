@@ -166,6 +166,11 @@ namespace PDM_ItemsCreator
                         DataTable table = result.Tables[0];
                         int creados = 0;
 
+                        // --- NUEVO: Configurar la barra de progreso ---
+                        pbMigracion.Minimum = 0;
+                        pbMigracion.Maximum = table.Rows.Count;
+                        pbMigracion.Value = 0;
+
                         // 3. Iterar, Crear y Mapear Variables
                         foreach (DataRow row in table.Rows)
                         {
@@ -235,6 +240,12 @@ namespace PDM_ItemsCreator
                             {
                                 LogMessage($"Fallo al procesar {newFileName}: {ex.Message}", Color.Red);
                             }
+
+                            // --- NUEVO: Avanzar la barra de progreso y refrescar la pantalla ---
+                            pbMigracion.Value++;
+                            Application.DoEvents();
+
+                            // --- FIN DE LA LÓGICA DE AUDITORÍA ---
                         }
 
                         LogMessage($"Migración finalizada. Se crearon y parametrizaron {creados} archivos.", Color.Blue);
@@ -260,6 +271,32 @@ namespace PDM_ItemsCreator
                     LogMessage($"Carpeta destino seleccionada: {fbd.SelectedPath}", Color.Blue);
                 }
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            // Cierra el formulario y finaliza el programa
+            this.Close();
+        }
+
+        private void btnNuevaMigracion_Click(object sender, EventArgs e)
+        {
+            // 1. Vaciamos las rutas
+            txtExcelPath.Text = "";
+            txtDestFolder.Text = "";
+
+            // 2. Deseleccionamos el tipo de archivo
+            cmbFileType.SelectedIndex = -1;
+
+            // 3. Reiniciamos la barra de progreso
+            pbMigracion.Value = 0;
+
+            // 4. Dejamos un mensaje de inicio en la consola
+            LogMessage("--- Listo para una nueva migración ---", Color.Black);
+
+            // Opcional: Si quieres que también se borre todo el historial de la consola, 
+            // puedes usar el nombre de tu RichTextBox seguido de .Clear();
+            // Ejemplo: rtbConsole.Clear();
         }
     }
 }

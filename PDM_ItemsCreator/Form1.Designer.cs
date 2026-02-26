@@ -42,6 +42,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtbLogs = new System.Windows.Forms.RichTextBox();
             this.btnStartMigration = new System.Windows.Forms.Button();
+            this.pbMigracion = new System.Windows.Forms.ProgressBar();
+            this.btnNuevaMigracion = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,16 +98,16 @@
             this.groupBox2.Controls.Add(this.txtExcelPath);
             this.groupBox2.Location = new System.Drawing.Point(33, 179);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(2544, 385);
+            this.groupBox2.Size = new System.Drawing.Size(2544, 290);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Configuración de Migración";
             // 
             // btnBrowseDest
             // 
-            this.btnBrowseDest.Location = new System.Drawing.Point(1074, 264);
+            this.btnBrowseDest.Location = new System.Drawing.Point(26, 207);
             this.btnBrowseDest.Name = "btnBrowseDest";
-            this.btnBrowseDest.Size = new System.Drawing.Size(226, 48);
+            this.btnBrowseDest.Size = new System.Drawing.Size(247, 48);
             this.btnBrowseDest.TabIndex = 5;
             this.btnBrowseDest.Text = "Buscar Destino";
             this.btnBrowseDest.UseVisualStyleBackColor = true;
@@ -112,9 +115,9 @@
             // 
             // txtDestFolder
             // 
-            this.txtDestFolder.Location = new System.Drawing.Point(26, 274);
+            this.txtDestFolder.Location = new System.Drawing.Point(357, 213);
             this.txtDestFolder.Name = "txtDestFolder";
-            this.txtDestFolder.Size = new System.Drawing.Size(1021, 38);
+            this.txtDestFolder.Size = new System.Drawing.Size(2052, 38);
             this.txtDestFolder.TabIndex = 4;
             // 
             // label1
@@ -144,9 +147,9 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(1122, 53);
+            this.btnBrowse.Location = new System.Drawing.Point(26, 127);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(247, 55);
+            this.btnBrowse.Size = new System.Drawing.Size(247, 47);
             this.btnBrowse.TabIndex = 1;
             this.btnBrowse.Text = "Buscar Excel";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -154,16 +157,16 @@
             // 
             // txtExcelPath
             // 
-            this.txtExcelPath.Location = new System.Drawing.Point(23, 124);
+            this.txtExcelPath.Location = new System.Drawing.Point(357, 132);
             this.txtExcelPath.Name = "txtExcelPath";
-            this.txtExcelPath.Size = new System.Drawing.Size(2497, 38);
+            this.txtExcelPath.Size = new System.Drawing.Size(2052, 38);
             this.txtExcelPath.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.rtbLogs);
             this.groupBox3.Controls.Add(this.btnStartMigration);
-            this.groupBox3.Location = new System.Drawing.Point(33, 619);
+            this.groupBox3.Location = new System.Drawing.Point(33, 499);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(2544, 634);
             this.groupBox3.TabIndex = 5;
@@ -188,11 +191,41 @@
             this.btnStartMigration.UseVisualStyleBackColor = true;
             this.btnStartMigration.Click += new System.EventHandler(this.btnStartMigration_Click);
             // 
+            // pbMigracion
+            // 
+            this.pbMigracion.Location = new System.Drawing.Point(59, 1175);
+            this.pbMigracion.Name = "pbMigracion";
+            this.pbMigracion.Size = new System.Drawing.Size(2500, 45);
+            this.pbMigracion.TabIndex = 7;
+            // 
+            // btnNuevaMigracion
+            // 
+            this.btnNuevaMigracion.Location = new System.Drawing.Point(841, 1292);
+            this.btnNuevaMigracion.Name = "btnNuevaMigracion";
+            this.btnNuevaMigracion.Size = new System.Drawing.Size(294, 58);
+            this.btnNuevaMigracion.TabIndex = 6;
+            this.btnNuevaMigracion.Text = "Nueva Migración";
+            this.btnNuevaMigracion.UseVisualStyleBackColor = true;
+            this.btnNuevaMigracion.Click += new System.EventHandler(this.btnNuevaMigracion_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(1657, 1292);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(301, 54);
+            this.btnSalir.TabIndex = 8;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2705, 1532);
+            this.ClientSize = new System.Drawing.Size(2705, 1422);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.pbMigracion);
+            this.Controls.Add(this.btnNuevaMigracion);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -224,6 +257,9 @@
         private System.Windows.Forms.ComboBox cmbFileType;
         private System.Windows.Forms.Button btnBrowseDest;
         private System.Windows.Forms.TextBox txtDestFolder;
+        private System.Windows.Forms.ProgressBar pbMigracion;
+        private System.Windows.Forms.Button btnNuevaMigracion;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 
