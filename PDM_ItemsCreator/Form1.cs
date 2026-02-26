@@ -128,7 +128,7 @@ namespace PDM_ItemsCreator
                         DataTable table = result.Tables[0];
                         int creados = 0;
 
-                        // --- NUEVO: Configurar la barra de progreso ---
+                        // Configurar la barra de progreso 
                         pbMigracion.Minimum = 0;
                         pbMigracion.Maximum = table.Rows.Count;
                         pbMigracion.Value = 0;
@@ -174,18 +174,24 @@ namespace PDM_ItemsCreator
                                     vault.RefreshFolder(destFolderPath);
                                     System.IO.File.SetAttributes(newFilePath, System.IO.FileAttributes.Normal);
 
-                                    LogMessage($"   -> 4. Escribiendo metadatos...", Color.Gray);
-
-                                    // >>> EL CAMBIO CLAVE: String vacío ("") para enlace directo a BD <<<
+                                    LogMessage($"   -> 4. Escribiendo metadatos de forma dinámica...", Color.Gray);
                                     IEdmEnumeratorVariable8 varEnum = (IEdmEnumeratorVariable8)newFile.GetEnumeratorVariable("");
 
-                                    string product = row["Product"]?.ToString() ?? "";
-                                    string revision = row["Revision"]?.ToString() ?? "";
-                                    string unidad = row["Unidad_de_medida"]?.ToString() ?? "";
+                                    // Recorremos todas las columnas que existan en el Excel
+                                    foreach (DataColumn col in table.Columns)
+                                    {
+                                        string columnName = col.ColumnName;
 
-                                    varEnum.SetVar("Product", "", product);
-                                    varEnum.SetVar("Revision", "", revision);
-                                    varEnum.SetVar("Unidad_de_medida", "", unidad);
+                                        // Ignoramos la columna "Name" porque ya la usamos para bautizar el archivo
+                                        if (columnName.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                                            continue;
+
+                                        // Obtenemos el valor de la celda para esta fila y columna
+                                        string cellValue = row[col]?.ToString() ?? "";
+
+                                        // Escribimos en PDM: El nombre de la columna DEBE coincidir con la variable de PDM
+                                        varEnum.SetVar(columnName, "", cellValue);
+                                    }
 
                                     varEnum.CloseFile(true);
 
@@ -203,7 +209,7 @@ namespace PDM_ItemsCreator
                                 LogMessage($"Fallo al procesar {newFileName}: {ex.Message}", Color.Red);
                             }
 
-                            // --- NUEVO: Avanzar la barra de progreso y refrescar la pantalla ---
+                            // Avanzar la barra de progreso y refrescar la pantalla ---
                             pbMigracion.Value++;
                             Application.DoEvents();
 
