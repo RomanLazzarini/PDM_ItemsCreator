@@ -30,44 +30,6 @@ namespace PDM_ItemsCreator
             InitializeComponent();
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Limpiamos la consola al intentar una nueva conexión
-                rtbLogs.Clear();
-
-                vault = new EdmVault5();
-                string vaultName = txtVaultName.Text.Trim();
-
-                if (string.IsNullOrEmpty(vaultName))
-                {
-                    MessageBox.Show("Por favor, ingrese el nombre de la bóveda.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                LogMessage("Intentando conectar a la bóveda: " + vaultName + "...", Color.Black);
-
-                // LoginAuto usa la sesión actual de Windows/PDM. 
-                // this.Handle.ToInt32() vincula posibles ventanas emergentes de PDM a nuestra app
-                vault.LoginAuto(vaultName, this.Handle.ToInt32());
-
-                if (vault.IsLoggedIn)
-                {
-                    lblStatus.Text = "Conectado";
-                    lblStatus.ForeColor = Color.Green;
-                    LogMessage("Conexión exitosa con PDM. Sesión iniciada.", Color.Green);
-                }
-            }
-            catch (Exception ex)
-            {
-                lblStatus.Text = "Desconectado";
-                lblStatus.ForeColor = Color.Red;
-                MessageBox.Show("Error al conectar con PDM:\n" + ex.Message, "Error crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LogMessage("Fallo en la conexión: " + ex.Message, Color.Red);
-            }
-        }
-
         // Método auxiliar para imprimir mensajes en el RichTextBox con colores
         private void LogMessage(string message, Color color)
         {
@@ -297,6 +259,45 @@ namespace PDM_ItemsCreator
             // Opcional: Si quieres que también se borre todo el historial de la consola, 
             // puedes usar el nombre de tu RichTextBox seguido de .Clear();
             // Ejemplo: rtbConsole.Clear();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Nombre de la bóveda hardcodeado por requerimiento del cliente
+            string vaultName = "EDELFLEX";
+            LogMessage($"Iniciando PDM_ItemsCreator...", Color.Black);
+            LogMessage($"Intentando conexión automática a la bóveda: {vaultName}...", Color.Blue);
+
+            try
+            {
+                // Instanciamos la bóveda si aún no existe
+                if (vault == null)
+                {
+                    vault = new EdmVault5();
+                }
+
+                // LoginAuto conecta silenciosamente usando la sesión actual del usuario de Windows
+                vault.LoginAuto(vaultName, this.Handle.ToInt32());
+
+                if (vault.IsLoggedIn)
+                {
+                    LogMessage("Conexión exitosa. Sesión de PDM iniciada automáticamente.", Color.Green);
+
+                    // Opcional: Si tenías un botón manual de "Conectar", lo deshabilitamos para evitar doble clic
+                    // btnConnect.Enabled = false; 
+                }
+
+                lblStatus.Text = "🟢 Conectado a EDELFLEX";
+                lblStatus.ForeColor = Color.Green;
+            }
+            catch (Exception ex)
+            {
+                LogMessage($"Fallo crítico al conectar con {vaultName}: {ex.Message}", Color.Red);
+                MessageBox.Show($"No se pudo conectar automáticamente a la bóveda {vaultName}. Verifique que PDM esté funcionando.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                lblStatus.Text = "🔴 Error de conexión";
+                lblStatus.ForeColor = Color.Red;
+            }
         }
     }
 }
