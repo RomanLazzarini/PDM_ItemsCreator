@@ -42,6 +42,7 @@
             this.pbMigracion = new System.Windows.Forms.ProgressBar();
             this.btnNuevaMigracion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             this.groupBox2.Controls.Add(this.cmbFileType);
             this.groupBox2.Controls.Add(this.btnBrowse);
             this.groupBox2.Controls.Add(this.txtExcelPath);
-            this.groupBox2.Location = new System.Drawing.Point(33, 125);
+            this.groupBox2.Location = new System.Drawing.Point(83, 213);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(2544, 290);
             this.groupBox2.TabIndex = 4;
@@ -134,7 +135,7 @@
             // 
             this.groupBox3.Controls.Add(this.rtbLogs);
             this.groupBox3.Controls.Add(this.btnStartMigration);
-            this.groupBox3.Location = new System.Drawing.Point(33, 436);
+            this.groupBox3.Location = new System.Drawing.Point(83, 531);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(2544, 634);
             this.groupBox3.TabIndex = 5;
@@ -143,7 +144,7 @@
             // 
             // rtbLogs
             // 
-            this.rtbLogs.Location = new System.Drawing.Point(26, 133);
+            this.rtbLogs.Location = new System.Drawing.Point(26, 131);
             this.rtbLogs.Name = "rtbLogs";
             this.rtbLogs.Size = new System.Drawing.Size(2494, 474);
             this.rtbLogs.TabIndex = 1;
@@ -161,9 +162,9 @@
             // 
             // pbMigracion
             // 
-            this.pbMigracion.Location = new System.Drawing.Point(59, 1120);
+            this.pbMigracion.Location = new System.Drawing.Point(109, 1188);
             this.pbMigracion.Name = "pbMigracion";
-            this.pbMigracion.Size = new System.Drawing.Size(2500, 45);
+            this.pbMigracion.Size = new System.Drawing.Size(2494, 55);
             this.pbMigracion.TabIndex = 7;
             // 
             // btnNuevaMigracion
@@ -186,11 +187,22 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(71, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(752, 72);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Creación Masiva de Archivos";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2705, 1422);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.pbMigracion);
             this.Controls.Add(this.btnNuevaMigracion);
@@ -198,12 +210,13 @@
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PDM Items Creator - Disegno Soft";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -222,6 +235,7 @@
         private System.Windows.Forms.ProgressBar pbMigracion;
         private System.Windows.Forms.Button btnNuevaMigracion;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label2;
     }
 }
 
