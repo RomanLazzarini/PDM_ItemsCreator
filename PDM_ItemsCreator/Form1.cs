@@ -228,15 +228,35 @@ namespace PDM_ItemsCreator
 
         private void btnBrowseDest_Click(object sender, EventArgs e)
         {
+            // 1. Verificamos que la bóveda esté iniciada para poder pedirle su ruta raíz
+            if (vault == null || !vault.IsLoggedIn)
+            {
+                MessageBox.Show("Aún no se ha conectado a la bóveda PDM.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
-                fbd.Description = "Seleccione la carpeta de destino dentro de la bóveda PDM";
-                // Si quieres, puedes setear RootFolder para que abra directamente en el disco de PDM
+                fbd.Description = "Seleccione la carpeta de destino dentro de la bóveda PDM EDELFLEX";
+
+                // 2. UX: Posicionamos el buscador directamente en la raíz de la bóveda del cliente
+                fbd.SelectedPath = vault.RootFolderPath;
 
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    txtDestFolder.Text = fbd.SelectedPath;
-                    LogMessage($"Carpeta destino seleccionada: {fbd.SelectedPath}", Color.Blue);
+                    string selectedPath = fbd.SelectedPath;
+
+                    // 3. SEGURIDAD: Validamos que la carpeta elegida pertenezca físicamente a la bóveda
+                    if (selectedPath.StartsWith(vault.RootFolderPath, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        txtDestFolder.Text = selectedPath;
+                        LogMessage($"Carpeta destino seleccionada: {selectedPath}", Color.Blue);
+                    }
+                    else
+                    {
+                        // Si elige una carpeta fuera de PDM, mostramos error y no llenamos el TextBox
+                        MessageBox.Show("Operación no permitida.\n\nDebe seleccionar una carpeta que se encuentre estrictamente dentro de la bóveda PDM.", "Ruta Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
