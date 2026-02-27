@@ -134,7 +134,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.rtbLogs);
-            this.groupBox3.Controls.Add(this.btnStartMigration);
+            this.groupBox3.Controls.Add(this.pbMigracion);
             this.groupBox3.Location = new System.Drawing.Point(83, 531);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(2544, 634);
@@ -144,7 +144,7 @@
             // 
             // rtbLogs
             // 
-            this.rtbLogs.Location = new System.Drawing.Point(26, 131);
+            this.rtbLogs.Location = new System.Drawing.Point(23, 61);
             this.rtbLogs.Name = "rtbLogs";
             this.rtbLogs.Size = new System.Drawing.Size(2494, 474);
             this.rtbLogs.TabIndex = 1;
@@ -152,9 +152,10 @@
             // 
             // btnStartMigration
             // 
-            this.btnStartMigration.Location = new System.Drawing.Point(26, 61);
+            this.btnStartMigration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartMigration.Location = new System.Drawing.Point(850, 1196);
             this.btnStartMigration.Name = "btnStartMigration";
-            this.btnStartMigration.Size = new System.Drawing.Size(312, 51);
+            this.btnStartMigration.Size = new System.Drawing.Size(1109, 51);
             this.btnStartMigration.TabIndex = 0;
             this.btnStartMigration.Text = "Iniciar migración";
             this.btnStartMigration.UseVisualStyleBackColor = true;
@@ -162,14 +163,14 @@
             // 
             // pbMigracion
             // 
-            this.pbMigracion.Location = new System.Drawing.Point(109, 1188);
+            this.pbMigracion.Location = new System.Drawing.Point(23, 555);
             this.pbMigracion.Name = "pbMigracion";
             this.pbMigracion.Size = new System.Drawing.Size(2494, 55);
             this.pbMigracion.TabIndex = 7;
             // 
             // btnNuevaMigracion
             // 
-            this.btnNuevaMigracion.Location = new System.Drawing.Point(841, 1292);
+            this.btnNuevaMigracion.Location = new System.Drawing.Point(850, 1318);
             this.btnNuevaMigracion.Name = "btnNuevaMigracion";
             this.btnNuevaMigracion.Size = new System.Drawing.Size(294, 58);
             this.btnNuevaMigracion.TabIndex = 6;
@@ -179,7 +180,8 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1657, 1292);
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalir.Location = new System.Drawing.Point(1658, 1322);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(301, 54);
             this.btnSalir.TabIndex = 8;
@@ -203,8 +205,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2705, 1422);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnStartMigration);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.pbMigracion);
             this.Controls.Add(this.btnNuevaMigracion);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
