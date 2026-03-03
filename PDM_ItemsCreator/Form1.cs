@@ -109,7 +109,22 @@ namespace PDM_ItemsCreator
                     return;
                 }
 
+                // Obtenemos la extensión inicial (Ej: ".cvd" o ".xlsx")
                 string extension = Path.GetExtension(templateFile.Name);
+                // --- INICIO FIX: DOBLE EXTENSIÓN PARA ARCHIVOS VIRTUALES ---
+                if (extension.Equals(".cvd", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Extraemos la parte anterior al .cvd (Ej: "BaseVirtualPieza.sldprt")
+                    string nombreSinCvd = Path.GetFileNameWithoutExtension(templateFile.Name);
+
+                    // Extraemos la extensión intermedia (Ej: ".sldprt")
+                    string extensionIntermedia = Path.GetExtension(nombreSinCvd);
+
+                    // Sumamos ambas (Ej: ".sldprt.cvd")
+                    extension = extensionIntermedia + extension;
+                }
+                // --- FIN FIX ---
+
                 LogMessage($"Iniciando migración con template: {templateFile.Name}", Color.Blue);
 
                 // Asegurar que el template base esté en la caché local

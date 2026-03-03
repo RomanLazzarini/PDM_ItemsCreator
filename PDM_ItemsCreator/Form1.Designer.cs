@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBrowseDest = new System.Windows.Forms.Button();
@@ -38,11 +39,12 @@
             this.txtExcelPath = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtbLogs = new System.Windows.Forms.RichTextBox();
-            this.btnStartMigration = new System.Windows.Forms.Button();
             this.pbMigracion = new System.Windows.Forms.ProgressBar();
+            this.btnStartMigration = new System.Windows.Forms.Button();
             this.btnNuevaMigracion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +88,7 @@
             // 
             this.txtDestFolder.Location = new System.Drawing.Point(357, 213);
             this.txtDestFolder.Name = "txtDestFolder";
+            this.txtDestFolder.ReadOnly = true;
             this.txtDestFolder.Size = new System.Drawing.Size(2052, 38);
             this.txtDestFolder.TabIndex = 4;
             // 
@@ -128,6 +131,7 @@
             // 
             this.txtExcelPath.Location = new System.Drawing.Point(357, 132);
             this.txtExcelPath.Name = "txtExcelPath";
+            this.txtExcelPath.ReadOnly = true;
             this.txtExcelPath.Size = new System.Drawing.Size(2052, 38);
             this.txtExcelPath.TabIndex = 0;
             // 
@@ -146,9 +150,17 @@
             // 
             this.rtbLogs.Location = new System.Drawing.Point(23, 61);
             this.rtbLogs.Name = "rtbLogs";
+            this.rtbLogs.ReadOnly = true;
             this.rtbLogs.Size = new System.Drawing.Size(2494, 474);
             this.rtbLogs.TabIndex = 1;
             this.rtbLogs.Text = "";
+            // 
+            // pbMigracion
+            // 
+            this.pbMigracion.Location = new System.Drawing.Point(23, 555);
+            this.pbMigracion.Name = "pbMigracion";
+            this.pbMigracion.Size = new System.Drawing.Size(2494, 55);
+            this.pbMigracion.TabIndex = 7;
             // 
             // btnStartMigration
             // 
@@ -160,13 +172,6 @@
             this.btnStartMigration.Text = "Iniciar migración";
             this.btnStartMigration.UseVisualStyleBackColor = true;
             this.btnStartMigration.Click += new System.EventHandler(this.btnStartMigration_Click);
-            // 
-            // pbMigracion
-            // 
-            this.pbMigracion.Location = new System.Drawing.Point(23, 555);
-            this.pbMigracion.Name = "pbMigracion";
-            this.pbMigracion.Size = new System.Drawing.Size(2494, 55);
-            this.pbMigracion.TabIndex = 7;
             // 
             // btnNuevaMigracion
             // 
@@ -195,21 +200,30 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(71, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(752, 72);
+            this.label2.Size = new System.Drawing.Size(741, 71);
             this.label2.TabIndex = 9;
             this.label2.Text = "Creación Masiva de Archivos";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(1512, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 38);
+            this.dateTimePicker1.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2705, 1422);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnStartMigration);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnNuevaMigracion);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
             this.Text = "PDM Items Creator - Disegno Soft";
@@ -238,6 +252,7 @@
         private System.Windows.Forms.Button btnNuevaMigracion;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
