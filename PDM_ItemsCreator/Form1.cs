@@ -17,12 +17,12 @@ namespace PDM_ItemsCreator
         // Diccionario para mapear el ComboBox con la ruta relativa del template en PDM
         private Dictionary<string, string> templatePaths = new Dictionary<string, string>
         {
-            { "Pieza de SolidWorks (.sldprt)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BasePieza.sldprt" },
-            { "Ensamblaje de SolidWorks (.sldasm)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BaseEnsamblaje.sldasm" },
-            { "Elemento virtual pieza (.sldprt.cvd)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BaseVirtualPieza.sldprt.cvd" },
-            { "Elemento virtual ensamblaje (.sldasm.cvd)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BaseVirtualEnsamblaje.sldasm.cvd" },
-            { "Word (.docx)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BaseWord.docx" },
-            { "Excel (.xlsx)", @"\INGENIERIA\BIBLIOTECA\TEMPLATES FILES\BaseExcel.xlsx" }
+            { "Pieza de SolidWorks (.sldprt)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BasePieza.sldprt" },
+            { "Ensamblaje de SolidWorks (.sldasm)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BaseEnsamblaje.sldasm" },
+            { "Elemento virtual pieza (.sldprt.cvd)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BaseVirtualPieza.sldprt.cvd" },
+            { "Elemento virtual ensamblaje (.sldasm.cvd)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BaseVirtualEnsamblaje.sldasm.cvd" },
+            { "Word (.docx)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BaseWord.docx" },
+            { "Excel (.xlsx)", @"\INGENIERIA\BIBLIOTECA\PPS TEMPLATES\BaseExcel.xlsx" }
         };
 
         public Form1()
